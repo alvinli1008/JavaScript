@@ -56,7 +56,7 @@ function returnNewNinjaFunction () {
 
  function getText() {
      console.log('In getText function');  // 4
-     return text;
+     return text;  // 5
  }
 
  console.log('Before making all the calls');  // 2
