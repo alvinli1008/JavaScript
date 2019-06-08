@@ -1,0 +1,19 @@
+<!-- 在interval的回调函数中使用闭包 -->
+<div id="box1" style="position: absolute">First Box</div>
+
+<script>
+    function animateIt(elementId) {
+        var elem = document.getElementById(elementId);
+        var tick = 0;
+        var timer = setInterval(function() {
+            if(tick < 100) {
+                elem.style.left = elem.style.top = tick + "px";
+                tick++;
+            } else {
+                clearInterval(timer);
+            }
+        }, 10);
+    }
+    animateIt("box1");
+</script>
+
