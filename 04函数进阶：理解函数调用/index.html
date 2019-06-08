@@ -1,0 +1,29 @@
+<!-- 使用箭头函数解决回调函数上下文问题 -->
+<button id="test">Click Me!</button>
+<script>
+    function Button() {
+        this.clicked = false;
+        this.click = () => {
+            this.clicked = true;
+            alert(button.clicked, "The button has been clicked");
+        };
+    }
+    var button = new Button();
+    var elem = document.getElementById("test");
+    elem.addEventListener("click", button.click);
+</script>
+
+<button id="test1">Click Me1!</button>
+<!-- 在事件处理中绑定指定上下文 -->
+<script>
+    // alert(this===window)  // true
+    var button = {
+        clicked: false,
+        click: function() {
+            this.clicked = true;
+            alert(button.clicked);
+        }
+    }
+    var elem = document.getElementById("test1");
+    elem.addEventListener("click", button.click.bind(button));
+</script>
