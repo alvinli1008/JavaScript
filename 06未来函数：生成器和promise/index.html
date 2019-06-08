@@ -1,0 +1,35 @@
+<div id="subTree">
+    <form>
+        <input type="text"/>
+    </form>
+    <p>Paragraph</p>
+    <span>Span</span>
+</div>
+<script>
+    // 递归遍历DOM
+    // function tarverseDOM(element, callback) {
+    //     callback(element);
+    //     element = element.firstElementChild;
+    //     while(element) {
+    //         tarverseDOM(element, callback);
+    //         element = element.nextElementSibling;
+    //     }
+    // }
+    // const subTree = document.getElementById("subTree");
+    // tarverseDOM(subTree, function(element) {
+    //     alert(element.nodeName);  // DIV FORM INPUT P SPAN
+    // })
+    // 用生成器遍历DOM树
+    function* DomTarversal(element) {
+        yield element;
+        element = element.firstElementChild;
+        while(element) {
+            yield* DomTarversal(element);
+            element = element.nextElementSibling;
+        }
+    }
+    const subTree2 = document.getElementById("subTree");
+    for (let element of DomTarversal(subTree2)) {
+        alert(element.nodeName);
+    }
+</script>
